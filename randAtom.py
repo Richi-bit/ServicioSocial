@@ -2,14 +2,15 @@ import random
 import numpy as np
 import math
 
-xi = random.uniform(0,5)
-yi = random.uniform(0,5)
-zi = random.uniform(0,5)
+xi = random.uniform(-3,3)
+yi = random.uniform(-3,3)
+zi = random.uniform(-3,3)
 
 save = []
 i = 1
+k = 1
 
-ejemplo = open("Ejemplo.txt", "w")
+ejemplo = open(str(k) + ".txt", "w")
 atomo = input("Atomo ")
 numAtoms = input("Numero de atomos ")
 cluster = input("Numero de clusters ")
@@ -42,11 +43,13 @@ deform = np.array(save)
 step = 0.8
 
 for i in range(int(cluster) - 1):
-	ejemplo.write("\n")
+	ejemplo2 = open(str(i + 2) + ".txt", "w")
+	ejemplo2.write(str(atomo) + "\n")
+	ejemplo2.write("\n")
 	for j in range(len(deform)):
 		deform[j] = deform[j] + (random.uniform(-1,1) * step)
 		print(deform[j])
 		finMat = []
 		finMat.append(deform[j])
 		xyz = finMat[0].tolist()
-		ejemplo.write(str(atomo) + "	" + str(xyz[0]) + "	" + str(xyz[1])+ "	" + str(xyz[2]) + "\n")
+		ejemplo2.write(str(atomo) + "	" + str(xyz[0]) + "	" + str(xyz[1])+ "	" + str(xyz[2]) + "\n")
